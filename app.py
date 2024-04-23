@@ -12,6 +12,11 @@ AWS_REGION = 'us-east-1'
 s3_client = boto3.client('s3', region_name=AWS_REGION)
 
 
+@app.route('/health-check', methods=['GET'])
+def health_check():
+    return "ready", 200
+
+
 @app.route('/get-file', methods=['GET'])
 def get_file():
     # Example path: /myfolder/mysubfolder/myfile.txt
